@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="row btn btn-outline-warning">
-  <h1><a href="{{path("fomulaire_affiche")}}">Ajouter une categorie !</a></h1>
+  <h1><a href="{{path("formulaire_affiche")}}">Ajouter une nouvelle categorie </a></h1>
 </div>
 
 <div>
@@ -17,6 +17,8 @@
                 <th>Title</th>
                 <th>Resume</th>
                 <th>Action</th>
+                <th>Editer</th>
+                <th>Supprimer</th>
                 
 
             </tr>
@@ -36,8 +38,16 @@
           {{categorie.resume}}
         </td>
         
-        <td class="btn btn-outline-info">
-          <a href="{{path('cat_affiche',{'id':categorie.id})}}">Cliquez ici !</a>
+        <td >
+          <a href="{{path('cat_affiche',{'id':categorie.id})}}">plus d'infos!</a>
+        </td>
+        
+        <td >
+          <a class='btn btn-warnig'href="{{path('edit_categorie',{'id':categorie.id})}}">Modifier!</a>
+        </td>
+        
+        <td class="bg-danger">
+          <a href="{{path('suppr_categorie',{'id':categorie.id})}}">Supprimer !</a>
         </td>
         
         

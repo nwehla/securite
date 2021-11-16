@@ -1,42 +1,17 @@
 
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
-			<div class="navbar-header">
-			<!-- Intégration du bouton toggle en premier-->
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<div class="navbar-brand">
-						<a href="#"><img src="http://www.webasun.com/wp-content/uploads/2014/06/wordpress_logo.png" alt="logo wordpress par ce que j'ai pas eu d'imagination sur ce coup là..." /></a>								
-				</div> <!-- fin nav bar brand-->
-				
-			</div> <!-- fin nav bar header-->
-
-			<div class="collapse navbar-collapse">
-					<ul class="nav navbar-nav" id="collapse-1">
-						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#">Blog</a></li>
-						<li><a href="#">Produit</a></li>
-						<li><a href="#">Contact</a></li>
-					</ul>
-			</div> <!-- fin navbar collapse-->
-					<p class="navbar-text">"L'expérience est le mots que l'on donne à nos erreurs..." O. Wilde</p>
-
-			<p class="navbar-text navbar-right"><a href="#" class="navbar-link">Se connecter</a></p>
 			
-		</div> <!-- fin container-->
-	</nav>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark ">
   <div class="container-fluid">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="{{path('bibi_extension')}}">Extensions</a>
-        <a class="nav-link" href="{{path('utilisateur')}}">Utilisateur</a>                        
-        <a class="nav-link" href="{{path('bibi_contenu')}}">Contenu</a>                        
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link active text-white" aria-current="page" href="">Home</a>
+        <a class="nav-link text-white" href="{{path('article')}}">Articles</a>
+        <a class="nav-link text-white" href="{{path('bibi_extension')}}">Extensions</a>
+        <a class="nav-link text-white" href="{{path('utilisateur')}}">Utilisateur</a>                        
+        <a class="nav-link text-white" href="{{path('bibi_contenu')}}">Contenu</a>                        
+        <a class="nav-link text-white" href="{{path('categorie')}}">Categorie</a>                        
+        <a class="nav-link disabled text-white" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </div>
     </div>
   </div>

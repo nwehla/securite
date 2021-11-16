@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controller;
-
 use Doctrine\ORM\EntityManagerInterface;
 
 
@@ -9,7 +8,7 @@ use App\Entity\Utilisateurs;
 use App\Form\UtilisateurType;
 use Symfony\Component\HttpFoundation\Request;
 
-use App\Repository\UtilisateursRepository;
+use App\Repository\UtilsateursRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -57,11 +56,38 @@ class UtilisateurController extends AbstractController
     /**
      *@Route("/{id}",name="uti_affiche")
      */
-    public function afficheUtilisateur(UtilisateursRepository $UtilisateursRepository, Utilisateurs $Utilisateurs, Request $Request, EntityManagerInterFace $Manager): Response
+    public function afficheUtilisateur( Utilisateurs $Utilisateurs, Request $Request, EntityManagerInterFace $Manager): Response
     {
         return $this->render("utilisateur/affiche.html.twig", [
             "id" => $Utilisateurs->getId(),
             "uti" => $Utilisateurs,
         ]);
     }
+
+    /**
+         *@Route("/{id}/edit",name="edit_utilisateur")
+         */
+        public function editer(Request $request,EntityManagerInterface $manager,Utilisateurs $utilisateurs ):Response
+        {
+            $form=$this->createForm(UtilisateurType::class,$utilisateurs);
+            $form->handleRequest($request);
+            if($form->isSubmitted()&& $form->isValid()){
+                $manager->flush();
+                return $this->redirectToRoute("uti_affiche",["id"=>$utilisateurs->getId()]);
+            }
+            return $this->render("utilisateur/form2.html.twig", [
+                "form" => $form->createView(),
+            ]);
+            }
+        
+     
+        /**
+         *@Route("/{id}/supprimer",name="suppr_utilisateur")
+         */
+        public function supprimerer(Request $request,EntityManagerInterface $manager,Utilisateurs  $utilisateurs):Response
+        {       $manager->remove($utilisateurs);
+                $manager->flush();
+                return $this->redirectToRoute('utilisateur');
+            }
+
 }

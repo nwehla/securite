@@ -4,23 +4,28 @@
 
 {% block body %}
 
+<div class="row btn btn-outline-warning">
+      
+  <h1><a class="nav-link "href="{{path('form_uti')}}">Ajouter un utitlisateur</a></h1>
+    
+</div>
 
-    <div class="container">
-      <div class="row bg-success light-border">
-        <h1><a href="{{path('form_uti')}}">Ajouter un utitlisateur</a></h1>
-    </div>
-<div>
-  <table class="table">
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">nom</th>
-      <th scope="col">prenom</th>  
-      <th scope="col">Adresse</th>  
-      <th scope="col">motdepasse</th>
-      <th scope="col">login</th>
-      <th scope="col">Photo</th>
-      <th scope="col">email</th>
-      <th scope="col">Action </th>
+  <div>
+  <h1>utilisateurs </h1>
+  <table class="table table-striped bordored-radius=2px text-center ">
+    <thead class="table-danger">
+        <tr>
+      <th >id</th>
+      <th >nom</th>
+      <th >prenom</th>  
+      <th >Adresse</th>  
+      <th >motdepasse</th>
+      <th >login</th>
+      <th >Photo</th>
+      <th >email</th>
+      <th >Action </th>
+      <th >Editer </th>
+      <th >Supprimer </th>
     </tr>
   </thead>
   <tbody>
@@ -43,9 +48,16 @@
 
       <td> {{ut.email}}
       </td>
-      <td class="btn btn-outline-info">
+      <td class="bg-outline-success">
         <a href="{{ path('uti_affiche', {'id':ut.id})}}">Cliquez ICI !</a>
       </td>
+      <td class="bg-outline-info">
+        <a href="{{ path('edit_utilisateur', {'id':ut.id})}}">Modifier!</a>
+      </td>
+      <td class="bg-outline-danger">
+        <a href="{{ path('suppr_utilisateur', {'id':ut.id})}}">Supprimer!</a>
+      </td>
+
    {% endfor %}
       
     </tr>

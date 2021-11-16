@@ -132,7 +132,30 @@ class ArticleController extends AbstractController
             'articles' => $articles,
         ]);
     }
-
-     
-    
+    /**
+         *@Route("/{id}/edit",name="edit_article")
+         */
+        public function editer(Request $request,EntityManagerInterface $manager,Articles $article  ):Response
+        {
+            $form=$this->createForm(ArticlesType::class,$article);
+            $form->handleRequest($request);
+            if($form->isSubmitted()&& $form->isValid()){
+                $manager->flush();
+                ;
+            }
+            return $this->render("Categorie/formulaire.html.twig",[
+                "form"=>$form->createView(),
+            ]);
+        }
+        
+        /**
+         *@Route("/{id}/supprimer",name="suppr_article")
+         */
+        public function supprimerer(Request $request,EntityManagerInterface $manager,Articles $articles ):Response
+        {       $manager->remove($articles);
+                $manager->flush();
+                return $this->redirectToRoute('article');
+        
+        }
 }
+                

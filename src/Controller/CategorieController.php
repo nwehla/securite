@@ -32,7 +32,7 @@ class CategorieController extends AbstractController
     }
 
     /**
-         *@Route("/formulaire",name="fomulaire_affiche")
+         *@Route("/formulaire",name="formulaire_affiche")
          */
         public function formulaire( Request $request,EntityManagerInterFace $manager):Response
         {
@@ -63,5 +63,32 @@ class CategorieController extends AbstractController
             ]);
         }
         
-    }
+        /**
+         *@Route("/{id}/edit",name="edit_categorie")
+         */
+        public function editer(Request $request,EntityManagerInterface $manager,Categorie $categorie ):Response
+        {
+            $form=$this->createForm(CategorieType::class,$categorie);
+            $form->handleRequest($request);
+            if($form->isSubmitted()&& $form->isValid()){
+                $manager->flush();
+                return $this->redirectToRoute('cat_affiche');
+            }
+            return $this->render("Categorie/formulaire.html.twig",[
+                "form"=>$form->createView(),
+            ]);
+        }
+        
+        /**
+         *@Route("/{id}/supprimer",name="suppr_categorie")
+         */
+        public function supprimerer(Request $request,EntityManagerInterface $manager,Categorie $categorie ):Response
+        {       $manager->remove($categorie);
+                $manager->flush();
+                return $this->redirectToRoute('categorie');
+            }
+         
+        }
+        
+
 

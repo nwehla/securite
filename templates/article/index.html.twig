@@ -3,30 +3,28 @@
 {% block title %}New Articles{% endblock %}
 
 {% block body %}
-<div class="container">
 
-<div class="row bg-success  border-light  ">
-<div class="col-md-4 text-center">
-        <a class="nav-link " href="{{path('ajouter_article_form')}}">Ajouter un nouvel Article !</a>
+<div class="row btn btn-outline-warning">
+  <h1><a class="nav-link " href="{{path('ajouter_article_form')}}">Ajouter un nouvel Article !</a>
 
 
 </div>
-</div>
-</div>
+
+<div>
 <h1>
     <h1>Articles </h1>
-<table class="table">
-        <thead>
-            <tr>
-            <th>Id</th>
+    <table class="table table-striped bordored-radius=2px text-center ">
+      <thead class="table-danger">
+          <tr>
+                <th>Id</th>
                 <th>Title</th>
                 <th>Resume</th>
                 <th>Action</th>
-                
-
-            </tr>
-        </thead>
-        <tbody>
+                <th>Editer</th>
+                <th>Supprimer</th>
+              </tr>
+            </thead>
+            <tbody>
         {% for article in articles %}
         <tr>
         <td>
@@ -44,6 +42,13 @@
           <a href="{{path('art_affichage', {'id':article.id})}}">Cliquez ICI !</a>
         </td>
         
+        <td >
+          <a class='-warnig'href="{{path('edit_article',{'id':article.id})}}">Modifier!</a>
+        </td>
+        
+        <td class="bg-danger">
+          <a href="{{path('suppr_categorie',{'id':article.id})}}">Supprimer !</a>
+        </td>
         </tr>
         
         

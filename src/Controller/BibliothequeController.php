@@ -121,16 +121,7 @@ class BibliothequeController extends AbstractController
         ]);
         
     }
-    /**
-     * @Route("/categorie", name="bibi_categorie")
-     */
-    public function categoriser(): Response
-    {
-        return $this->render('bibliotheque/categorie.html.twig', [
-            'controller_name' => 'BibliothequeController',
-        ]);
-        
-    }
+    
     /**
      * @Route("/article", name="bibi_article")
      */
