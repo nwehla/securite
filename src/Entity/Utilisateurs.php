@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Entity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 use App\Repository\UtilisateursRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateursRepository::class)
+ * @UniqueEntity("email")
+ 
+ * 
  */
 class Utilisateurs
 {
@@ -24,11 +29,24 @@ class Utilisateurs
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "veuillez  remmplir  le champ")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Le nom doit avoir au mois {{ limit }} characteres ",
+     *      maxMessage = "Ce nom ne doit pas depassé la longuer de  {{ limit }} characters")
      */
+     
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "veuillez  remmplir  le champ")
+     *  @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Le prenom doit avoir au mois {{ limit }} characteres ",
+     *      maxMessage = "Ce prenom ne doit pas depassé la longuer de  {{ limit }} characters")
      */
     private $photo;
 
@@ -39,7 +57,7 @@ class Utilisateurs
 
     /**
      * @ORM\Column(type="string", length=255)
-     */
+     * @     * @Assert\NotBlank(message = "veuillez  remmplir  le champ")     */
     private $login;
 
     /**

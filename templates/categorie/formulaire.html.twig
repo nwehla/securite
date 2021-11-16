@@ -1,20 +1,14 @@
 {% extends 'base.html.twig '%}
-{% block body %}
-<div class="container">
-    <div class="section">
-        <div class="row">
-            <div class="col ml2 sl2">
-                <h1>Ajout d'une Categorie</h1>
-                {{form_start(form)}}
-                {{form_label(form.titre)}}
-                {{form_widget(form.titre)}}
-                
-                {{form_label(form.resume)}}
-                {{form_widget(form.resume)}}
-                
-                <button class="button btn btn-success btn-lg center-block" id="submitBtn">Check it out!</button>
 
-                {{form_end(form)}}
+{% block body %}
+
+<div>{% block montitre %}formulaire  categorie {% endblock %}
+</div>
+
+<div>
+                <h1>Ajout d'une Categorie</h1>
+                {{form(form)}}
+
             </div>
         </div>
 
