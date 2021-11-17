@@ -1,11 +1,15 @@
 {% extends 'base.html.twig '%}
 {% block body %}
-<div class="container">
+<div>{% block montitre %}Affichage des Utilisateurs {% endblock %}
+</div>
     <div class="section">
+    <div class="row btn btn-outline-warning">
+  <h1><a href="{{path("utilisateur")}}">Retour aux utilisateurs !</a></h1>
+</div>
+
         
         <div class="row">
             <div class="col ml2 sl2">
-                <h1>Ajout d'un utilisateur</h1>
                 {{form(form)}}
                 
             </div>

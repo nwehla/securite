@@ -9,8 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateursRepository::class)
- * @UniqueEntity('email')
- * 
+ * @UniqueEntity("email",message="veuillez choisir une autre adresse mail ,celle-ci est déja utlisée !")
+ * @UniqueEntity("login",message="veuillez choisir un autre login,celui-ci est déja utlisé !")
  */
 class Utilisateurs
 {
@@ -45,7 +45,6 @@ class Utilisateurs
 
     /**
      * @ORM\Column(type="string", length=255)
-
      * 
      * */
     private $login;
@@ -62,8 +61,7 @@ class Utilisateurs
 
     /**
      * @ORM\Column(type="string", length=255)
-
-*/
+    */
     private $email;
 
     /**
