@@ -4,10 +4,13 @@ namespace App\Entity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 use App\Repository\CategorieRepository;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=CategorieRepository::class)
+ * @UniqueEntity('titre')
  * 
  */
 class Categorie

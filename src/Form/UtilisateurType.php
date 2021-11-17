@@ -6,6 +6,7 @@ use App\Entity\Utilisateurs;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class UtilisateurType extends AbstractType
 {
@@ -21,6 +22,7 @@ class UtilisateurType extends AbstractType
             ->add('adresse')
             ->add('email')
             ->add('role')
+            ->add('envoyer',SubmitType::class)
         ;
     }
 

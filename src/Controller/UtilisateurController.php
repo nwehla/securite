@@ -35,7 +35,7 @@ class UtilisateurController extends AbstractController
      * @Route("/form" , name="form_uti")
      */
     public function formuler(Request $request, EntityManagerInterface $manager): Response
-    {        
+    {        $utilisateurs = new Utilisateurs();
         $form = $this->createForm(UtilisateurType::class);
         $form->handleRequest($request);
 

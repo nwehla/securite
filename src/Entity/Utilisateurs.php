@@ -9,8 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateursRepository::class)
- * @UniqueEntity("email")
- 
+ * @UniqueEntity('email')
  * 
  */
 class Utilisateurs
@@ -24,29 +23,18 @@ class Utilisateurs
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message = "veuillez  remmplir  le champ")
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Le nom doit avoir au mois {{ limit }} characteres ",
-     *      maxMessage = "Ce nom ne doit pas depassé la longuer de  {{ limit }} characters")
+    * 
      */
-     
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message = "veuillez  remmplir  le champ")
-     *  @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Le prenom doit avoir au mois {{ limit }} characteres ",
-     *      maxMessage = "Ce prenom ne doit pas depassé la longuer de  {{ limit }} characters")
      */
     private $photo;
 
@@ -57,7 +45,9 @@ class Utilisateurs
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @     * @Assert\NotBlank(message = "veuillez  remmplir  le champ")     */
+
+     * 
+     * */
     private $login;
 
     /**
@@ -72,7 +62,8 @@ class Utilisateurs
 
     /**
      * @ORM\Column(type="string", length=255)
-     */
+
+*/
     private $email;
 
     /**
