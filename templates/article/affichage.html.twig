@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Articles{% endblock %}
+{% block montitre %}Informations sur {{ articles.titre }} {% endblock %}
+
 
 {% block body %}
 <div class="row bg-success light border center-block">
     <h1><a href="{{path("article")}}">Retour aux Articles !</a></h1>
   </div>
   
-    <h1>Articles </h1>
 <table class="table">
         <thead>
             <tr>
@@ -17,7 +18,6 @@
                 <th>images</th>
                 <th>resume</th>
                 <th>date</th>
-                <th>Cattegorie</th>
 
             </tr>
         </thead>
@@ -30,7 +30,6 @@
                 <td>{{ articles.images }}</td>
                 <td>{{ articles.resume }}</td>
                 <td>{{ articles.date|date("d/m/Y") }}</td>
-                <td>{{ articles.categorie.titre}}</td>
             </tr>
 
         </tbody>
