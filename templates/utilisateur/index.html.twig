@@ -17,13 +17,14 @@
     <thead class="table-danger">
         <tr>
       <th >id</th>
-      <th >nom</th>
-      <th >prenom</th>  
+      <th >Nom</th>
+      <th >Prenom</th>  
       <th >Adresse</th>  
-      <th >motdepasse</th>
-      <th >login</th>
+      <th >Mot de Passe</th>
+      <th >Login</th>
       <th >Photo</th>
-      <th >email</th>
+      <th >Email</th> 
+      <th >Role</th> 
       <th >Action </th>
       <th >Editer </th>
       <th >Supprimer </th>
@@ -49,13 +50,15 @@
 
       <td> {{ut.email}}
       </td>
+      <td> {{ut.role}}
+      </td>
       <td class="bg-outline-success">
         <a href="{{ path('uti_affiche', {'id':ut.id})}}">Cliquez ICI !</a>
       </td>
       <td class="bg-outline-info">
         <a href="{{ path('edit_utilisateur', {'id':ut.id})}}">Modifier!</a>
       </td>
-      <td class="bg-outline-danger">
+      <td class="btn btn-danger ">
         <a href="{{ path('suppr_utilisateur', {'id':ut.id})}}">Supprimer!</a>
       </td>
 

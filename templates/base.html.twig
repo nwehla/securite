@@ -75,9 +75,10 @@ body.sidebar-toggled footer.sticky-footer {
 
     </style>
     
-        <h1 class="border border-dark  rounded m-2 p-2 text-white bg-primary">{% block montitre %}{% endblock %}</h1>
+        <h1 class="border border-dark  rounded m-2 p-2 text-white bg-primary">{% include "menu.html.twig"%}
+{% block montitre %}{% endblock %}</h1>
         {% block body %}
-        {% endblock %}
+x        {% endblock %}
       </body>
     <footer>
       {% block footer %}

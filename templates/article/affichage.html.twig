@@ -17,6 +17,7 @@
                 <th>images</th>
                 <th>resume</th>
                 <th>date</th>
+                <th>Cattegorie</th>
 
             </tr>
         </thead>
@@ -29,6 +30,7 @@
                 <td>{{ articles.images }}</td>
                 <td>{{ articles.resume }}</td>
                 <td>{{ articles.date|date("d/m/Y") }}</td>
+                <td>{{ articles.categorie.titre}}</td>
             </tr>
 
         </tbody>

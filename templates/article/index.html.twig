@@ -21,6 +21,7 @@
                 <th>Id</th>
                 <th>Title</th>
                 <th>Resume</th>
+                <th>Categorie</th>
                 <th>Action</th>
                 <th>Editer</th>
                 <th>Supprimer</th>
@@ -39,6 +40,9 @@
         
         <td>
           {{article.resume}}
+        </td>
+        <td>
+          {{article.categorie.titre}}
         </td>
         <td>
           <a href="{{path('art_affichage', {'id':article.id})}}">Cliquez ICI !</a>

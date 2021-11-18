@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 use App\Repository\CategorieRepository;
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=CategorieRepository::class)
- * @UniqueEntity('titre')
+ * @UniqueEntity("titre")
  * 
  */
 class Categorie
@@ -24,12 +26,7 @@ class Categorie
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message = "veuillez  remmplir  le champ") 
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Le titre doit avoir au moins {{ limit }} characteres ",
-     *      maxMessage = "Ce titre ne doit pas depaser la longuer de  {{ limit }} characters")
+     * 
      */
      
     private $titre;
@@ -40,6 +37,16 @@ class Categorie
      * 
      */
     private $resume;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Articles::class, mappedBy="categorie", orphanRemoval=true)
+     */
+    private $article;
+
+    public function __construct()
+    {
+        $this->article = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -66,6 +73,36 @@ class Categorie
     public function setResume(?string $resume): self
     {
         $this->resume = $resume;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Articles[]
+     */
+    public function getArticle(): Collection
+    {
+        return $this->article;
+    }
+
+    public function addArticle(Articles $article): self
+    {
+        if (!$this->article->contains($article)) {
+            $this->article[] = $article;
+            $article->setCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Articles $article): self
+    {
+        if ($this->article->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getCategorie() === $this) {
+                $article->setCategorie(null);
+            }
+        }
 
         return $this;
     }
