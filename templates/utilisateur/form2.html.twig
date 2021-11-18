@@ -1,21 +1,22 @@
 {% extends 'base.html.twig '%}
+{% block montitre %}Formulaire des Utilisateurs {% endblock %}
+
 {% block body %}
-<div>{% block montitre %}Affichage des Utilisateurs {% endblock %}
-</div>
-    <div class="section">
-    <div class="row btn btn-outline-warning">
-  <h1><a href="{{path("utilisateur")}}">Retour aux utilisateurs !</a></h1>
-</div>
 
-        
-        <div class="row">
-            <div class="col ml2 sl2">
-                {{form(form)}}
-                
-            </div>
-        </div>
-
-    </div>
+    <div class="btn btn-outline-success text-white">
+  <h3><a href="{{path('utilisateur')}}">Retour aux utilisateurs !</a></h3>
 </div>
+<div>
 
+    <table class="table table-striped bordored-radius=2px text-center ">
+        <thead class="table-danger">
+            <tr>
+                    {{form(form)}}
+                    
+              
+      </tbody>
+    </table>
+
+</div>
 {% endblock body %}
+    
