@@ -38,6 +38,7 @@ class ArticleController extends AbstractController
      */
     public function ajouter_form_article(Request $request,EntityManagerInterface $manager):Response
     {
+        $articles= new Articles();
         $form = $this->createForm(ArticlesType::class);
                $form->handleRequest($request);
                if($form->isSubmitted() && $form->isValid()){
@@ -143,7 +144,7 @@ class ArticleController extends AbstractController
                 $manager->flush();
                 ;
             }
-            return $this->render("Categorie/formulaire.html.twig",[
+            return $this->render("article/formulaire.html.twig",[
                 "form"=>$form->createView(),
             ]);
         }
