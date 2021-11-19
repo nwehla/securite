@@ -19,7 +19,9 @@ class ArticlesType extends AbstractType
             ->add('date')
             ->add('resume')
             ->add('images')
-            ->add("titre",EntityType::class )
+            ->add("titre",EntityType::class ,[
+                
+            ])
             ->add('envoyer',SubmitType::class)
             
         ;
