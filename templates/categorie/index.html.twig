@@ -15,7 +15,7 @@
             <th>Id</th>
                 <th>Titre</th>
                 <th>Resume</th>
-                <th>Categorie</th>
+                
                 <th>Action</th>
                 <th>Editer</th>
                 <th>Supprimer</th>
@@ -37,13 +37,7 @@
         <td>
           {{categorie.resume}}
         </td>
-        <td>
-        {% for article in categorie.article %}
-        
-          {{article.titre}}
-        
-        {% endfor %}
-        </td>
+ 
         
         <td >
           <a href="{{path('cat_affiche',{'id':categorie.id})}}">plus d'infos!</a>
