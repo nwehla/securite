@@ -5,6 +5,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 
 use App\Entity\Categorie;
+use App\Entity\Articles;
 use App\Form\CategorieType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -55,11 +56,13 @@ class CategorieController extends AbstractController
         /**
          *@Route("/{id}",name="cat_affiche")
          */
-        public function afficheCategorie(  Categorie $Categorie ):Response
+        public function afficheCategorie(  Categorie $Categorie, Articles $article ):Response
         {
             return $this->render("Categorie/affiche.html.twig",[
                 "id"=>$Categorie->getId(),
+                "article"=>$Categorie->getArticle(),
                 "cat"=>$Categorie,
+               
             ]);
         }
         

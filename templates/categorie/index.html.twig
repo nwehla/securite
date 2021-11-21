@@ -5,6 +5,8 @@
 
 
 {% block body %}
+{% include "menu_biblio_admin.html.twig" %}
+
 <div class="row btn btn-outline-warning">
   <h1><a href="{{path("formulaire_affiche")}}">Ajouter une nouvelle categorie </a></h1>
 
@@ -15,7 +17,7 @@
             <th>Id</th>
                 <th>Titre</th>
                 <th>Resume</th>
-                
+                 <th>Articles</th>
                 <th>Action</th>
                 <th>Editer</th>
                 <th>Supprimer</th>
@@ -37,6 +39,16 @@
         <td>
           {{categorie.resume}}
         </td>
+
+        <td>
+        <ol>
+          {% for article in categorie.article %}
+  <li> <span style="border:2px;border-radius:50px;background-color:blue;">{{ article.id }}
+  </span> 
+  <span>{{ article.titre }}</span>  </li>
+  {% endfor %}
+  </ol>
+       </td>
  
         
         <td >

@@ -3,6 +3,11 @@
 {% block title %}Categorie{% endblock %}
 
 {% block body %}
+<div class="navbar">
+  {% include "menu_biblio_admin.html.twig" %}
+
+</div>
+
 <div class="row bg-success light border">
   <h1><a href="{{path("categorie")}}">Retour aux categories !</a></h1>
 </div>
@@ -23,9 +28,20 @@
           <td> {{cat.id}}</td>
           <td> {{cat.titre}}</td>
           <td> {{cat.resume}}</td>
+        
+
         </tr>
       </tbody>
     </table>
   </div>
+
+    <h2> LISTE DES ARTICLES DE CETTE CATEGORIE</h2>
+ 
+  <ol>
+   {% for art in article %}
+  <li>{{ art.id }} {{ art.titre }} </li>
+  {% endfor %}
+  </ol>
+
 
 {% endblock %}

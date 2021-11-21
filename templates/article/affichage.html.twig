@@ -3,8 +3,11 @@
 {% block title %}New Articles{% endblock %}
 {% block montitre %}Informations sur {{ articles.titre }} {% endblock %}
 
-
 {% block body %}
+<div class="navbar">
+    {% include "menu_biblio_admin.html.twig" %}
+
+</div>
 <div class="row bg-success light border center-block">
     <h1><a href="{{path("article")}}">Retour aux Articles !</a></h1>
   </div>
