@@ -17,18 +17,16 @@ class ArticlesFixtures extends Fixture
     {
         $faker = Faker\Factory::create('fr_FR');
 
-        // Creer occurence de 8 Auteurs
-        for ($k = 0; $k<8; $k++) {
+        // Creer occurence de 5 Auteurs
+        for ($k = 0; $k<5; $k++) {
             $auteurs = new Auteurs();
             $auteurs->setNom($faker->firstName())
                 ->setPrenom($faker->lastName())
                 ->setMail($faker->sentence());
             $manager->persist($auteurs);
-
-
+                // Mainteannt je cree mes Categories
             for ($i = 0; $i < 5; $i++) {
                 $categories = new Categorie();
-
                 $categories->setTitre($faker->sentence())
                     ->setResume($faker->sentence());
 
@@ -51,6 +49,7 @@ class ArticlesFixtures extends Fixture
                 }
             }
         }
+        
 
         $manager->flush();
     }

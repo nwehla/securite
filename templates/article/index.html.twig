@@ -14,6 +14,7 @@
                 <th>Title</th>
                 <th>Resume</th>
                 <th>Categorie</th>
+                <th>Auteur</th>
                 <th>Action</th>
                 <th>Editer</th>
                 <th>Supprimer</th>
@@ -36,6 +37,12 @@
         <td>
           {{article.categorie.titre}}
         </td>
+        
+       
+          <td>
+          {{article.auteurs.nom}}
+        </td>
+        
         <td>
           <a href="{{path('art_affichage', {'id':article.id})}}">Cliquez ICI !</a>
         </td>

@@ -9,12 +9,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class CommentairesController extends AbstractController
 {
     /**
-     * @Route("/commentaires", name="commentaires")
+     * @Route("/commentaires", name="commentaire")
      */
     public function index(): Response
+
     {
-        return $this->render('commentaires/index.html.twig', [
-            'controller_name' => 'CommentairesController',
+     $repo=$this->getDoctrine()->getRepository(Commentaires::class);
+     $commentaires=$repo->findAll();
+        return $this->render('commentaires/commentaire.html.twig', [
+      'commentaires'=>$commentaires,
         ]);
     }
 }

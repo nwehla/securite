@@ -1,20 +1,60 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello AuteursController!{% endblock %}
-
+{% extends "base.html.twig" %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% include "menu_biblio_admin.html.twig" %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="row btn btn-outline-warning">
+  <h1><a class="nav-link " href="{{path('ajouter_auteur_form')}}">Ajouter un nouvel auteur !</a>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/symfony/test5/src/Controller/AuteursController.php'|file_link(0) }}">src/Controller/AuteursController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/symfony/test5/templates/auteurs/index.html.twig'|file_link(0) }}">templates/auteurs/index.html.twig</a></code></li>
-    </ul>
 </div>
+
+    <table class="table table-striped bordored-radius=2px text-center ">
+      <thead class="table table-danger">
+          <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Mail</th>
+                <th>Action</th>
+                <th>Editer</th>
+                <th>Supprimer</th>
+              </tr>
+            </thead>
+            <tbody>
+        {% for auteur in auteurs %}
+        <tr>
+        <td>
+          {{auteur.id}}
+        </td>
+        
+        <td>
+          {{auteur.nom}}
+        </td>
+        
+        <td>
+          {{auteur.prenom}}
+        </td>
+        <td>
+          {{auteur.mail}}
+        </td>
+        <td>
+        <td>
+          <a href="{{path('affi_auteur', {'id':auteur.id})}}">Cliquez ICI !</a>
+        </td>
+        
+        <td >
+          <a class='-warnig'href="{{path('edit_auteur',{'id':auteur.id})}}">Modifier!</a>
+        </td>
+        
+        <td class="bg-danger">
+          <a href="{{path('suppr_auteur',{'id':auteur.id})}}">Supprimer !</a>
+        </td>
+        </tr>
+        
+        
+{% endfor %}
+          
+
+
+        </tbody>
+    </table>
 {% endblock %}
