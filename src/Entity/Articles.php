@@ -48,6 +48,11 @@ class Articles
      */
     private $categorie;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Auteurs::class, inversedBy="article")
+     */
+    private $auteurs;
+
     
     public function getId(): ?int
     {
@@ -122,6 +127,18 @@ class Articles
     public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getAuteurs(): ?Auteurs
+    {
+        return $this->auteurs;
+    }
+
+    public function setAuteurs(?Auteurs $auteurs): self
+    {
+        $this->auteurs = $auteurs;
 
         return $this;
     }

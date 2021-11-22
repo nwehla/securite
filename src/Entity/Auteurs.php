@@ -1,21 +1,16 @@
 <?php
 
 namespace App\Entity;
+
+use App\Repository\AuteursRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Symfony\Component\Validator\Constraints as Assert;
-
-use App\Repository\CategorieRepository;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CategorieRepository::class)
- * @UniqueEntity("titre")
- * 
+ * @ORM\Entity(repositoryClass=AuteursRepository::class)
  */
-class Categorie
+class Auteurs
 {
     /**
      * @ORM\Id
@@ -26,20 +21,21 @@ class Categorie
 
     /**
      * @ORM\Column(type="string", length=255)
-     * 
      */
-     
-    private $titre;
+    private $nom;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     * 
-     * 
+     * @ORM\Column(type="string", length=255)
      */
-    private $resume;
+    private $prenom;
 
     /**
-     * @ORM\OneToMany(targetEntity=Articles::class, mappedBy="categorie", orphanRemoval=true)
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mail;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Articles::class, mappedBy="auteurs")
      */
     private $article;
 
@@ -53,26 +49,38 @@ class Categorie
         return $this->id;
     }
 
-    public function getTitre(): ?string
+    public function getNom(): ?string
     {
-        return $this->titre;
+        return $this->nom;
     }
 
-    public function setTitre(string $titre): self
+    public function setNom(string $nom): self
     {
-        $this->titre = $titre;
+        $this->nom = $nom;
 
         return $this;
     }
 
-    public function getResume(): ?string
+    public function getPrenom(): ?string
     {
-        return $this->resume;
+        return $this->prenom;
     }
 
-    public function setResume(?string $resume): self
+    public function setPrenom(string $prenom): self
     {
-        $this->resume = $resume;
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getMail(): ?string
+    {
+        return $this->mail;
+    }
+
+    public function setMail(string $mail): self
+    {
+        $this->mail = $mail;
 
         return $this;
     }
@@ -89,7 +97,7 @@ class Categorie
     {
         if (!$this->article->contains($article)) {
             $this->article[] = $article;
-            $article->setCategorie($this);
+            $article->setAuteurs($this);
         }
 
         return $this;
@@ -99,17 +107,11 @@ class Categorie
     {
         if ($this->article->removeElement($article)) {
             // set the owning side to null (unless already changed)
-            if ($article->getCategorie() === $this) {
-                $article->setCategorie(null);
+            if ($article->getAuteurs() === $this) {
+                $article->setAuteurs(null);
             }
         }
 
         return $this;
     }
-
-// public function __toString()
-// {
-//     return $this->titre;
-// }
-
 }
