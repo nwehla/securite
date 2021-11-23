@@ -3,7 +3,7 @@
 {% include "menu_biblio_admin.html.twig" %}
 
 <div class="row btn btn-outline-warning">
-  <h1><a class="nav-link " href="{{path('form_auteur')}}">Ajouter un nouvel auteur !</a>
+  <h1><a class="nav-link " href="{{path('aut_formulaire')}}">Ajouter un nouvel auteur !</a>
 
 </div>
 
@@ -36,12 +36,12 @@
         <td>
           {{auteur.mail}}
         </td>
+        
         <td>
           <a href="{{path('affi_auteur', {'id':auteur.id})}}">Plus d'infos</a>
         </td>
         
         <td >
-          <a class='-warnig'href="{{path('edit_auteur',{'id':auteur.id})}}">Modifier!</a>
         </td>
         
         

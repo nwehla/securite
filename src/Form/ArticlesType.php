@@ -2,15 +2,16 @@
 
 namespace App\Form;
 
+use App\Entity\Auteurs;
 use App\Entity\Articles;
 use App\Entity\Categorie;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class ArticlesType extends AbstractType
 {
@@ -31,7 +32,16 @@ class ArticlesType extends AbstractType
                 'multiple'=>true,
                 'expanded'=>true,*/
             ])
-            ->add('envoyer',SubmitType::class)
+            ->add("auteurs",EntityType::class,[
+                'class'=>Auteurs::class,
+                'placeholder'=>'selectionnner une auteur',
+
+                'choice_label'=>'nom',
+                /*utiliser un checkbox à choix unique ou multiple
+                'multiple'=>true,*/
+                'expanded'=>true,
+            ])
+            ->add("valider",SubmitType::class)
             
         ;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\Entity\Articles;
+use App\Entity\Auteurs;
 use App\Form\ArticlesType;
 use App\Repository\ArticlesRepository;
 
@@ -129,8 +130,9 @@ class ArticleController extends AbstractController
     public function montrer(Articles $articles, ArticlesRepository $articlesRepository, Request $request, EntityManagerInterface $manager): Response
     {
         return $this->render('article/affichage.html.twig', [
-            // 'id' => $articles->getId(),
+             'id' => $articles->getId(),
             'articles' => $articles,
+            'auteur'=>$articles->getAuteurs()
         ]);
     }
     /**
