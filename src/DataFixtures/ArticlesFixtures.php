@@ -2,13 +2,15 @@
 
 namespace App\DataFixtures;
 
+use Faker;
 use DateTime;
 use App\Entity\Auteurs;
 use App\Entity\Articles;
 use App\Entity\Categorie;
+use App\Entity\Commentaires;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Faker;
+use Symfony\Component\Validator\Constraints\Date;
 
 class ArticlesFixtures extends Fixture
 {
@@ -31,6 +33,7 @@ class ArticlesFixtures extends Fixture
                     ->setResume($faker->sentence());
 
                 $manager->persist($categories);
+                     
 
                 // Mainteannt je cree mes Articles
 
@@ -45,8 +48,24 @@ class ArticlesFixtures extends Fixture
                         ->setCategorie($categories)
                         ->setAuteurs($auteurs);
                         $manager->persist($articles);
+
+                             //je mets des commentaires
+
+                for($l=0;$l<6;$l++)
+           {
+                $commentaires=new Commentaires();
+
+                $commentaires->setAuteur($faker->lastName())
+                             ->setMail($faker->sentence())
+                             ->setDate(new \Datetime)
+                             ->setCommentaire($faker->sentence());
+                             $manager->persist($commentaires);
+
+                }
+           
                     
                 }
+            
             }
         }
         

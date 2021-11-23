@@ -37,11 +37,13 @@ use Symfony\Component\Routing\Annotation\Route;
             $form=$this->createForm(AuteursType::class);
             $form->handleRequest($request);
             if($form->isSubmitted()&&$form->isValid()){
-                $categories=$form->getData();
-                $manager->persist($auteurs);
+                $auteur=$form->getData();
+                $manager->persist($auteur);
                 $manager->flush();
     
-                return $this->redirectToRoute("affi_auteur");
+                return $this->redirectToRoute('affi_auteur',[
+                    'id'=>$auteur->getId(),
+                ]);
     
             }
             return $this->render('auteurs/formulaire.html.twig', [
@@ -50,24 +52,24 @@ use Symfony\Component\Routing\Annotation\Route;
             ]);
         }
     
-    
     /**
-     * @Route("/{id}",name="affi_auteur" , methods={"GET"})
+     * @Route("/{id}", name="affi_auteur", methods={"GET"})
      */
-    public function afficher(Auteurs $auteur): Response
-    {
-
-        return $this->render('auteurs/affiche.html.twig', [
-            'id'=>$auteur->getId(),
-            'auteur'=>$auteur,
-            'article'=>$auteur->getArticle(),
-        ]);
-    }
+    
+        public function afficheauteur(Auteurs $auteur): Response
+        {
+            return $this->render("auteurs/affiche.html.twig",[
+                "id"=>$auteur->getId(),
+             'article'=>$auteur->getArticle(),
+                'auteur'=>$auteur,
+               
+            ]);
+        }
     
     
 
     /**
-     * @Route("/{id}/edit",name="edit_auteur" , methods={"GET" , "POST"})
+     * @Route("/{id}/edit",name="edit_auteur", methods={"GET" , "POST"})
      */
     public function editer(EntityManagerInterface $manager,Request $request,Auteurs $auteur): Response
     {
@@ -75,8 +77,10 @@ use Symfony\Component\Routing\Annotation\Route;
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()){
                 $manager->flush();
-                return $this->redirectToRoute("affichage_auteur");     
-            }
+                return $this->redirectToRoute('affi_auteur',[
+                    'id'=>$auteur->getId(),
+                ]);            }
+            
 
         return $this->render('auteurs/formulaire.html.twig', [
             'form'=>$form->createView(),

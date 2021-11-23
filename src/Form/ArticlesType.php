@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Auteurs;
 use App\Entity\Articles;
 use App\Entity\Categorie;
+use App\Entity\Commentaires;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -41,6 +42,16 @@ class ArticlesType extends AbstractType
                 'multiple'=>true,*/
                 'expanded'=>true,
             ])
+            // ->add("Commentaires",EntityType::class,[
+            //     'class'=>Commentaires::class,
+            //     'placeholder'=>'selectionnner un ou plusieurs commentaires',
+
+            //     'choice_label'=>'nom',
+            //     /*utiliser un checkbox à choix unique ou multiple*/
+            //     'multiple'=>true,
+            //     'expanded'=>true,
+            //])
+        //
             ->add("valider",SubmitType::class)
             
         ;

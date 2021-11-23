@@ -1,20 +1,69 @@
 {% extends 'base.html.twig' %}
+ 
+ 
+{% block montitre %}Affichage des commentaires {% endblock %}
 
-{% block title %}Hello CommentairesController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% include "menu_biblio_admin.html.twig" %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="row btn btn-outline-warning">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/symfony/test5/src/Controller/CommentairesController.php'|file_link(0) }}">src/Controller/CommentairesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/symfony/test5/templates/commentaires/index.html.twig'|file_link(0) }}">templates/commentaires/index.html.twig</a></code></li>
-    </ul>
-</div>
+<div>
+<h1><table class="table table-striped bordored-radius=2px text-center ">
+        <thead class="table-danger">
+            <tr>
+            <th>Id</th>
+                <th>Auteur</th>
+                <th>Mail</th>
+                 <th>Date</th>
+                 <th>Commentaire</th>
+                <th>Action</th>
+                <th>Editer</th>
+                <th>Supprimer</th>
+                
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for commentaire in commentaires %}
+        <tr>
+        <td>
+          {{commentaire.id}}
+        </td>
+        
+        <td>
+          {{auteur.nom}}
+        </td>
+        
+        <td>
+          {{commentaire.mail}}
+        </td>
+        <td>
+          {{commentaire.commentaire}}
+        </td>
+
+        <td>
+        <ol>
+          {% for article in commentaire.article %}
+  <li> <span style="border:2px;border-radius:50px;background-color:blue;">{{ article.id }}
+  </span> 
+  <span>{{ article.titre }}</span>  </li>
+  {% endfor %}
+  </ol>
+       </td>
+ 
+        
+        
+        
+        
+        </tr>
+        
+        
+{% endfor %}
+          
+
+
+        </tbody>
+    </table>
 {% endblock %}

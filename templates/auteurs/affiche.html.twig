@@ -36,6 +36,8 @@
 <ol>
 {% for art in article %}
 <li> {{ art.titre}}</li>
+{% else %}
+Aucun enregistrement 
 {% endfor %}
 </ol>
 {% endblock %}

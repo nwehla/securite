@@ -1,15 +1,18 @@
 <?php
 
 namespace App\Controller;
+use App\Entity\Commentaires;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+/**
+     * @Route("/commentaires")
+     */
 class CommentairesController extends AbstractController
 {
     /**
-     * @Route("/commentaires", name="commentaire")
+     * @Route("/", name="commentaire")
      */
     public function index(): Response
 

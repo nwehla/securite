@@ -5,36 +5,8 @@
     <div class="section">
         <div class="row">
             <div class="col ml2 sl2">
-                {{form_start(form)}}
-                <div class="form-group">
-                  <label for="titre">titre</label>
-                  {{form_widget(form.titre)}}
-                </div>
-                <div class="form-group">
-                  <label for="contenu">contenu</label>
-                  {{form_widget(form.contenu)}}  
-                </div>  
-                              
-                <div class="form-group">
-                  <label for="date">date</label>
-                  {{form_widget(form.date)}}  
-                </div>  
-                              
-                <div class="form-group">
-                  <label for="resume">resume</label>
-                  {{form_widget(form.resume)}}  
-                </div>  
-                              
-                <div class="form-group">
-                  <label for="image">image</label>
-                  {{form_widget(form.images)}}  
-                </div>  
-                      
-
-                
-                <button class="button btn btn-success btn-lg center-block" id="submitBtn">cliquez ici !</button>
-
-                {{form_end(form)}}
+                {{form(form)}}
+          
             </div>
         </div>
 

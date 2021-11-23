@@ -53,6 +53,11 @@ class Articles
      */
     private $auteurs;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Commentaires::class, inversedBy="articles")
+     */
+    private $commentaire;
+
     
     public function getId(): ?int
     {
@@ -139,6 +144,18 @@ class Articles
     public function setAuteurs(?Auteurs $auteurs): self
     {
         $this->auteurs = $auteurs;
+
+        return $this;
+    }
+
+    public function getCommentaire(): ?Commentaires
+    {
+        return $this->commentaire;
+    }
+
+    public function setCommentaire(?Commentaires $commentaire): self
+    {
+        $this->commentaire = $commentaire;
 
         return $this;
     }
