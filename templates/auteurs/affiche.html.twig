@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}L'auteur{% endblock %}
+
+{% block body %}
+<div>{% block montitre %} information sur l'auteur {% endblock %}
+</div>
+<div class="row bg-success light border">
+  <h1><a href="{{path("auteur")}}">Retour aux auteurs !</a></h1>
+</div>
+
+
+<div>
+<h1>
+    <h1><p>Informations sur : {{auteur.nom}} {{auteur.prenom}}</p></h1>
+
+  <table class="table">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">mail</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"> {{auteur.id}}
+      </th>
+      <td> {{auteur.nom}}
+      </td>
+      <td> {{auteur.prenom}}
+      </td>
+      <td> {{auteur.mail}}
+      </td>
+      
+    
+    
+    </tr>
+  </tbody>
+</table>
+{% endblock %}
