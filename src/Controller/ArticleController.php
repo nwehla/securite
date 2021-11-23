@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\Entity\Articles;
+use App\Entity\Commentaires;
 use App\Entity\Auteurs;
 use App\Form\ArticlesType;
 use App\Repository\ArticlesRepository;
@@ -132,7 +133,8 @@ class ArticleController extends AbstractController
         return $this->render('article/affichage.html.twig', [
              'id' => $articles->getId(),
             'articles' => $articles,
-            'auteur'=>$articles->getAuteurs()
+            'auteur'=>$articles->getAuteurs(),
+            'commentaire'=>$articles->getCommentaire(),
         ]);
     }
     /**

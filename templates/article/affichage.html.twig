@@ -8,7 +8,7 @@
     {% include "menu_biblio_admin.html.twig" %}
 
 </div>
-<div class="row bg-success light border center-block">
+<div class="btn btn-warning center-block">
     <h1><a href="{{path("article")}}">Retour aux Articles !</a></h1>
   </div>
   
@@ -43,4 +43,15 @@
 <li> {{ auteur.nom}}</li>
 
 </ul>
+<h1>Lire les  Commentaires </h1>
+
+<ol>
+{% for art in commentaire %}
+<li> {{ art.date|date("d/m/Y") }}</li></br>
+<span>{{ art.commentaire }}</span>
+{% else %}
+Aucun enregistrement 
+{% endfor %}
+</ol>
+
 {% endblock %}

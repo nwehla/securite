@@ -23,4 +23,15 @@ class CommentairesController extends AbstractController
       'commentaires'=>$commentaires,
         ]);
     }
+    /**
+     * @Route("/{id}", name="affi_commentaire")
+     */
+    public function affiche(Commentaires $commentaire): Response
+
+    {
+        return $this->render('commentaires/affiche.html.twig', [
+      'id'=>$commentaire->getId(),
+      
+        ]);
+    }
 }
