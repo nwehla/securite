@@ -33,6 +33,7 @@
                 <td>{{ articles.images }}</td>
                 <td>{{ articles.resume }}</td>
                 <td>{{ articles.date|date("d/m/Y") }}</td>
+                
             </tr>
 
         </tbody>
@@ -44,14 +45,16 @@
 
 </ul>
 <h1>Lire les  Commentaires </h1>
-
-<ol>
-{% for art in commentaire %}
-<li> {{ art.date|date("d/m/Y") }}</li></br>
-<span>{{ art.commentaire }}</span>
-{% else %}
-Aucun enregistrement 
-{% endfor %}
-</ol>
+{% for com in articles.commentaires %}
+<h2>Commenté le : {{com.date|date("d/m/Y")}}</h2>
+    commentaire : {{com.commentaire}}
+           {% endfor %}
+           <div>
+           <h2>laissser un commentaire </h2>
+           {{ form(form) }}
+           </div>
+           
+           
+           
 
 {% endblock %}

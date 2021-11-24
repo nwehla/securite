@@ -15,6 +15,7 @@
                 <th>Resume</th>
                 <th>Categorie</th>
                 <th>Auteur</th>
+                <th>Commentaires</th>
                 <th>Action</th>
                 <th>Editer</th>
                 <th>Supprimer</th>
@@ -41,6 +42,14 @@
        
           <td>
           {{article.auteurs.nom}}
+        </td>
+        
+          <td>
+           {% for com in article.commentaires %}
+                  {{com.commentaire}}
+           {% endfor %}
+           
+
         </td>
         
         <td>

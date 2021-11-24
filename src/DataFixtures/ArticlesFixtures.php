@@ -58,8 +58,12 @@ class ArticlesFixtures extends Fixture
                 $commentaires->setAuteur($faker->lastName())
                              ->setMail($faker->sentence())
                              ->setDate(new \Datetime)
-                             ->setCommentaire($faker->sentence());
+                             ->setCommentaire($faker->sentence())
+                             ->setArticle($articles);
+
                              $manager->persist($commentaires);
+
+                             
 
                 }
            

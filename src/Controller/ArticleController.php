@@ -1,19 +1,20 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\Articles;
-use App\Entity\Commentaires;
 use App\Entity\Auteurs;
+use App\Entity\Articles;
 use App\Form\ArticlesType;
-use App\Repository\ArticlesRepository;
+use App\Entity\Commentaires;
+use App\Form\CommentaireType;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManager;
+use App\Repository\ArticlesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
     use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/articles")
@@ -33,6 +34,7 @@ class ArticleController extends AbstractController
         return $this->render('article/index.html.twig', [
             'controller_name' => 'ArticleController',
             "articles"=>$articles,
+        
         ]);
     }
     /**
@@ -126,15 +128,33 @@ class ArticleController extends AbstractController
      
     //deuxième méthode
     /**
-     * @Route("/{id}", name="art_affichage",methods={"GET"})
+     * @Route("/{id}", name="art_affichage",methods={"GET","POST"})
      */
-    public function montrer(Articles $articles, ArticlesRepository $articlesRepository, Request $request, EntityManagerInterface $manager): Response
+    public function montrer(Articles $articles ,EntityManagerInterface $manager,Request $request): Response
     {
+
+        $commentaire = new Commentaires;
+        $form=$this->createForm(CommentaireType::class);
+        $form->handleRequest($request);
+        if($form->isSubmitted()&&$form->isValid()){
+            $commentaire=$form->getData();
+            $manager->persist($commentaire);
+            $articles->addCommentaire($commentaire);
+            $manager->flush();
+
+            // return $this->redirectToRoute('affi_commetaire',[
+                // 'id'=>$commentaire->getId(),
+            // ]);
+
+        }
+
         return $this->render('article/affichage.html.twig', [
              'id' => $articles->getId(),
             'articles' => $articles,
             'auteur'=>$articles->getAuteurs(),
-            'commentaire'=>$articles->getCommentaire(),
+                'form'=>$form->createView(),
+            
+    
         ]);
     }
     /**
