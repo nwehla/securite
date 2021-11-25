@@ -2,12 +2,19 @@
 {% block montitre %}Ajouter un Article{% endblock %}
 {% block body %}
 <div class="navbar">
-    {% include "menu_biblio_admin.html.twig" %}
+    {% include "menu_biblio_admin.html.twig " %}
 
+</div>
+</div>
+<div class="btn btn-warning center-block">
+    <h1><a href="{{path("article")}}">Retour aux Articles !</a></h1>
+  </div>
+
+<div class="form-control border border-5 width=5% border-dark rounded-pill bg-info">
+    {{ form(form) }}
 </div>
 
 
-    {{ form(form) }}
         
   
 

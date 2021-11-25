@@ -4,7 +4,9 @@ namespace App\Form;
 
 use App\Entity\Commentaires;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,8 +17,8 @@ class CommentaireType extends AbstractType
         $builder
             ->add('auteur')
             ->add('mail')
-            ->add('date')
-            ->add('commentaire')
+            ->add('date',BirthdayType::class)
+            ->add('commentaire',TextareaType::class)
             ->add("publier",SubmitType::class)
         ;
     }

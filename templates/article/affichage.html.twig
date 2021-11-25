@@ -4,6 +4,7 @@
 {% block montitre %}Informations sur {{ articles.titre }} {% endblock %}
 
 {% block body %}
+
 <div class="navbar">
     {% include "menu_biblio_admin.html.twig" %}
 
@@ -16,11 +17,8 @@
         <thead>
             <tr>
                 <th>id</th>
-                <th>Title</th>
-                <th>Contenu</th>
                 <th>images</th>
                 <th>resume</th>
-                <th>date</th>
 
             </tr>
         </thead>
@@ -28,30 +26,52 @@
 
             <tr>
                 <td>{{ articles.id }}</td>
-                <td>{{ articles.titre }}</td>
-                <td>{{ articles.Contenu }}</td>
                 <td>{{ articles.images }}</td>
                 <td>{{ articles.resume }}</td>
-                <td>{{ articles.date|date("d/m/Y") }}</td>
                 
             </tr>
 
         </tbody>
+    
     </table>
+<div class="jumbotron">
     <h1>
     Auteur Lié A l'Article<h1>
     <ul>
-<li> {{ auteur.nom}}</li>
+<li>nom: {{ auteur.nom}}</li>
 
 </ul>
-<h1>Lire les  Commentaires </h1>
+</div>
+<div>
+<h2>
+    {{ articles.titre }}
+
+</h2>
+</div>
+    <p>
+      {{ articles.contenu}}
+
+    </p>
+
+<div class="jumbotron">    
+<h1 class="display-4">Lire les  Commentaires </h1>
 {% for com in articles.commentaires %}
-<h2>Commenté le : {{com.date|date("d/m/Y")}}</h2>
-    commentaire : {{com.commentaire}}
+<div class="alert alert-secondary" role="alert">
+
+<h4>Commenté le : {{com.date|date("d/m/Y")}}</h4>
+    <h2>commentaire : {{com.commentaire}}<h2>
+    {% else %}
+    Aucun commentaire
+</div>
+</div>
            {% endfor %}
            <div>
            <h2>laissser un commentaire </h2>
-           {{ form(form) }}
+           </div>   
+          <div class="form-control border border-5 width=50 border-dark rounded-pill bg-info">
+    {{ form(form) }}
+      </div>
+
            </div>
            
            
