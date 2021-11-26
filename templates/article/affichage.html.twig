@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+
+
 {% block title %}New Articles{% endblock %}
 {% block montitre %}Informations sur {{ articles.titre }} {% endblock %}
 
@@ -53,12 +55,15 @@
 
     </p>
 
-<div class="jumbotron">    
-<h1 class="display-4">Lire les  Commentaires </h1>
+<div class="card" style="width: 18 rem" >
+  <img class="card-img-top" src="" alt="Card image cap">
+  <h5><div class="card-body">les commentaires</h5>
+  <h1 class="card-title"">Lire les  Commentaires </h1>
 {% for com in articles.commentaires %}
-<div class="alert alert-secondary" role="alert">
+<div class=">
 
 <h4>Commenté le : {{com.date|date("d/m/Y")}}</h4>
+<h4 class="badge badge-info">Auteur : {{com.auteur }}</h4>
     <h2>commentaire : {{com.commentaire}}<h2>
     {% else %}
     Aucun commentaire
@@ -73,6 +78,25 @@
       </div>
 
            </div>
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Featured
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+</div><div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Featured
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+</div>
            
            
            
