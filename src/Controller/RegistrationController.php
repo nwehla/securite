@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Utilisateurs;
 use App\Form\RegistrationFormType;
-use App\Form\UtilisateursType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,24 +16,22 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $userPasswordEncoder): Response
+    public function register(Request $request, UserPasswordEncoderInterface $userPasswordEncoder, EntityManagerInterface $entityManager): Response
     {
-        $user = new Utilisateurs();
-        $form = $this->createForm(UtilisateursType::class $utilisateur,RegistrationFormType::class, $user);
+        $utilisateurs = new Utilisateurs();
+        $form = $this->createForm(RegistrationFormType::class, $utilisateurs);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             // encode the plain password
-            $user->setMotdepasse(
+            $utilisateurs->setMotdepasse(
             $userPasswordEncoder->encodePassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
+                    $utilisateurs,
+                    $form->get('motdepasse')->getData()
                 )
             );
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
+            $entityManager->persist($utilisateurs);
             $entityManager->flush();
             // do anything else you need here, like send an email
 
